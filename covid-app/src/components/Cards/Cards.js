@@ -1,10 +1,13 @@
 import React from 'react';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import CountUp from 'react-countup';
 
 import styles from './Cards.module.css';
 
-const Cards = (props) => {
-	console.log(props);
+const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
+	if (!confirmed) {
+		return 'Loading....';
+	}
 
 	return (
 		<div className={styles.container}>
@@ -14,8 +17,17 @@ const Cards = (props) => {
 						<Typography color='textSecondary' gutterBottom>
 							Infected
 						</Typography>
-						<Typography variant='h5'>Real Data</Typography>
-						<Typography color='textSecondary'>Real Date</Typography>
+						<Typography variant='h5'>
+							<CountUp
+								start={0}
+								end={confirmed.value}
+								duration={2.5}
+								separator=','
+							/>
+						</Typography>
+						<Typography color='textSecondary'>
+							{new Date(lastUpdate).toDateString()}
+						</Typography>
 						<Typography variant='body2'>Number of active Cases</Typography>
 					</CardContent>
 				</Grid>
@@ -24,8 +36,17 @@ const Cards = (props) => {
 						<Typography color='textSecondary' gutterBottom>
 							Recovered
 						</Typography>
-						<Typography variant='h5'>Real Data</Typography>
-						<Typography color='textSecondary'>Real Date</Typography>
+						<Typography variant='h5'>
+							<CountUp
+								start={0}
+								end={confirmed.value}
+								duration={2.5}
+								separator=','
+							/>
+						</Typography>
+						<Typography color='textSecondary'>
+							{new Date(lastUpdate).toDateString()}
+						</Typography>
 						<Typography variant='body2'>Number of recoveries cases</Typography>
 					</CardContent>
 				</Grid>
@@ -34,9 +55,20 @@ const Cards = (props) => {
 						<Typography color='textSecondary' gutterBottom>
 							Deaths
 						</Typography>
-						<Typography variant='h5'>Real Data</Typography>
-						<Typography color='textSecondary'>Real Date</Typography>
-						<Typography variant='body2'>Number of deaths caused by covid</Typography>
+						<Typography variant='h5'>
+							<CountUp
+								start={0}
+								end={confirmed.value}
+								duration={2.5}
+								separator=','
+							/>
+						</Typography>
+						<Typography color='textSecondary'>
+							{new Date(lastUpdate).toDateString()}
+						</Typography>
+						<Typography variant='body2'>
+							Number of deaths caused by covid
+						</Typography>
 					</CardContent>
 				</Grid>
 			</Grid>
