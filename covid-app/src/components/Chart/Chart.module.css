@@ -4,3 +4,9 @@
 	width: 85%;
 	background-color: #f8f8ff;
 }
+
+@media (max-width: 770px) {
+	.container {
+		width: 100%;
+	}
+}
