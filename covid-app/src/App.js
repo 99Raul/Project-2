@@ -4,7 +4,7 @@ import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api/api';
 
-import covidImage from './images/covid.png'
+import covidImage from './images/covid.png';
 
 class App extends Component {
 	state = {
@@ -33,10 +33,10 @@ class App extends Component {
 
 		return (
 			<div className={styles.container}>
-				<img className={styles.image}   src={covidImage} alt="Covid-19"/>
+				<img className={styles.image} src={covidImage} alt='Covid-19' />
 				<Cards data={data} />
 				<CountryPicker handleCountryChange={this.handleCountryChange} />
-				<Chart data={data} country={country}/>
+				<Chart data={data} country={country} />
 			</div>
 		);
 	}

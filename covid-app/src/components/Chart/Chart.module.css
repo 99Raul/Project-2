@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	width: 85%;
-	background-color: #f8f8ff;
+	background-color: whitesmoke;
 }
 
 @media (max-width: 770px) {
