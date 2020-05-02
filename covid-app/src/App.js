@@ -4,9 +4,11 @@ import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api/api';
 
+import Maps from './Maps';
 import covidImage from './images/covid.png';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-class App extends Component {
+export default class App extends Component {
 	state = {
 		data: {},
 		country: '',
@@ -28,6 +30,14 @@ class App extends Component {
 		console.log(fetchedData);
 	};
 
+	// const [darkMode, setDarkMode] = this.setState(false)
+
+	// const theme = createMuiTheme({
+	// 	palette: {
+	// 		type: darkMode ? "dark" : "light"
+	// 	}
+	// })
+
 	render() {
 		const { data, country } = this.state;
 
@@ -35,11 +45,10 @@ class App extends Component {
 			<div className={styles.container}>
 				<img className={styles.image} src={covidImage} alt='Covid-19' />
 				<Cards data={data} />
+				<Maps />
 				<CountryPicker handleCountryChange={this.handleCountryChange} />
 				<Chart data={data} country={country} />
 			</div>
 		);
 	}
 }
-
-export default App;
