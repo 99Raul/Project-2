@@ -1,54 +1,56 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
+
 
 import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
-import { fetchData } from './api/api';
+import { fetchData, } from './api/api';
 
 import Maps from './Maps';
 import covidImage from './images/covid.png';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
+
 
 export default class App extends Component {
 	state = {
 		data: {},
 		country: '',
 	};
-
+	
 	async componentDidMount() {
 		const fetchedData = await fetchData();
-
+		
 		this.setState({ data: fetchedData });
 	}
-
+	
 	handleCountryChange = async (country) => {
 		//fetch the data
 		//set the state
 		const fetchedData = await fetchData(country);
-
+		
 		this.setState({ data: fetchedData, country: country });
-
+		
 		console.log(fetchedData);
 	};
 
-	// const [darkMode, setDarkMode] = this.setState(false)
 
-	// const theme = createMuiTheme({
-	// 	palette: {
-	// 		type: darkMode ? "dark" : "light"
-	// 	}
-	// })
+	
 
 	render() {
 		const { data, country } = this.state;
 
 		return (
-			<div className={styles.container}>
-				<img className={styles.image} src={covidImage} alt='Covid-19' />
-				<Cards data={data} />
-				<Maps />
-				<CountryPicker handleCountryChange={this.handleCountryChange} />
-				<Chart data={data} country={country} />
-			</div>
+			
+				<div className={styles.container}>
+
+					<img className={styles.image} src={covidImage} alt='Covid-19' />
+					<Cards data={data} />
+					<Maps />
+					<CountryPicker handleCountryChange={this.handleCountryChange} />
+					<Chart data={data} country={country} />
+				</div>
+		
 		);
 	}
 }
