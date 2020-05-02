@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
-import { Switch } from '@material-ui/core';
 
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const Maps = () => {
@@ -39,9 +38,10 @@ const Maps = () => {
 
 	return (
 		<div style={{ height: '100vh', width: '100%' }}>
-			<Switch />
 			<GoogleMapReact
-				bootstrapURLKeys={{ key: 'AIzaSyDaG10dxvbJw2nt_UJxU0Y9n5YSYh2c - yo' }}
+				bootstrapURLKeys={{
+					key: process.env.REACT_APP_API_KEY,
+				}}
 				defaultCenter={{ lat: 38, lng: -97 }}
 				defaultZoom={4}>
 				{countriesLocations}

@@ -7,7 +7,7 @@ import { fetchData, } from './api/api';
 
 import Maps from './Maps';
 import covidImage from './images/covid.png';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 
 
 
